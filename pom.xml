@@ -11,7 +11,7 @@
 
 	<groupId>vrent</groupId>
 	<artifactId>vrent-spring-boot-starter-outbox</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1.0</version>
 	<name>vrent-spring-boot-starter-outbox</name>
 
 	<description>Helper dependency for building and publishing the outbox pattern using the messaging pattern
