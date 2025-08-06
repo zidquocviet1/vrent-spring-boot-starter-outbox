@@ -34,6 +34,14 @@
 		<url/>
 	</scm>
 
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/zidquocviet1/vrent-spring-boot-starter-outbox</url>
+		</repository>
+	</distributionManagement>
+
 	<repositories>
 		<repository>
 			<id>confluent</id>
