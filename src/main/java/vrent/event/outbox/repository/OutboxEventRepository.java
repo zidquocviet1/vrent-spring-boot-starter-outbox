@@ -35,6 +35,12 @@ public class OutboxEventRepository {
 
   @Transactional
   public void save(
+      String aggregateId, String aggregateType, String topic, String valueClass, String valueJson) {
+    save(aggregateId, aggregateType, topic, null, null, valueClass, valueJson);
+  }
+
+  @Transactional
+  public void save(
       String aggregateId,
       String aggregateType,
       String topic,

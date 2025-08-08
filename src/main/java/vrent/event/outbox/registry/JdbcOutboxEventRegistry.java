@@ -6,27 +6,26 @@ import vrent.event.outbox.repository.OutboxEventRepository;
 public class JdbcOutboxEventRegistry implements OutboxEventRegistry {
   private final OutboxEventRepository outboxEventRepository;
 
-  public JdbcOutboxEventRegistry(
-      OutboxEventRepository outboxEventRepository) {
+  public JdbcOutboxEventRegistry(OutboxEventRepository outboxEventRepository) {
     this.outboxEventRepository = outboxEventRepository;
   }
 
   @Override
   public <K, V> void save(String aggregateId, String aggregateType, String topic, K key, V value) {
     try {
-      final String keyClass;
-      final String keyJson;
-      if (key != null) {
-        keyClass = ((GenericContainer) key).getSchema().getFullName();
-        keyJson = key.toString();
-      } else {
-        keyClass = null;
-        keyJson = null;
-      }
       final String valueClass = ((GenericContainer) value).getSchema().getFullName();
-
-      outboxEventRepository.save(
-          aggregateId, aggregateType, topic, keyClass, keyJson, valueClass, value.toString());
+      if (key == null) {
+        outboxEventRepository.save(aggregateId, aggregateType, topic, valueClass, value.toString());
+      } else {
+        outboxEventRepository.save(
+            aggregateId,
+            aggregateType,
+            topic,
+            ((GenericContainer) key).getSchema().getFullName(),
+            key.toString(),
+            valueClass,
+            value.toString());
+      }
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
