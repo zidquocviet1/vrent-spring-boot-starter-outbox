@@ -2,8 +2,5 @@ vrent:
   event:
     outbox:
       outbox-event-table: outbox_event
-      serializer-type: avro
-      avro-schema-location: src/main/avro
       publish-duration-ms: 500
       failure-retry-attempts: 3
-      schema-registry-url: http://localhost:8081
