@@ -24,7 +24,9 @@
 	</licenses>
 
 	<developers>
-		<developer/>
+		<developer>
+			<name>Viet Mai</name>
+		</developer>
 	</developers>
 
 	<scm>
