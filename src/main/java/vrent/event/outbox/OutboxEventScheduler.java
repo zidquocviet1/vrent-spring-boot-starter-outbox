@@ -10,11 +10,16 @@ import org.apache.avro.specific.SpecificDatumReader;
 import org.apache.avro.specific.SpecificRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import vrent.event.outbox.repository.OutboxEventRepository;
 import vrent.event.outbox.repository.entity.OutboxEvent;
 
+@ConditionalOnProperty(
+    prefix = "vrent.event.outbox",
+    name = "publisher-type",
+    havingValue = "cron-job")
 public class OutboxEventScheduler {
   private static final Logger logger = LoggerFactory.getLogger(OutboxEventScheduler.class);
 

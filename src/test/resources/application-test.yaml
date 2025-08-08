@@ -3,5 +3,5 @@ vrent:
     outbox:
       outbox-event-table: outbox_event
       publish-duration-ms: 500
-      publisher-type: cron-job # cron-job or debezium
+      publisher-type: cron-job
       failure-retry-attempts: 3
